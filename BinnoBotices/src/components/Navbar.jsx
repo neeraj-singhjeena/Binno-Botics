@@ -1,55 +1,3 @@
-// import { Link } from "react-router-dom";
-// import { useAuth } from "../context/AuthContext";
-
-// export default function Navbar() {
-//   const { user, logout } = useAuth();
-
-//   return (
-//     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-//       <Link className="navbar-brand" to="/">
-//         BinnoBotices
-//       </Link>
-//       <div className="collapse navbar-collapse">
-//         <ul className="navbar-nav me-auto">
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/">
-//               Home
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/about">
-//               About
-//             </Link>
-//           </li>
-//           <li className="nav-item">
-//             <Link className="nav-link" to="/contact">
-//               Contact
-//             </Link>
-//           </li>
-//         </ul>
-//         <ul className="navbar-nav">
-//           {user ? (
-//             <li className="nav-item">
-//               <button className="btn btn-outline-light" onClick={logout}>
-//                 Logout
-//               </button>
-//             </li>
-//           ) : (
-//             <li className="nav-item">
-//               <Link className="btn btn-outline-light" to="/login">
-//                 Login
-//               </Link>
-//               <Link to="/signup" className="nav-link">
-//                 Signup
-//               </Link>
-//             </li>
-//           )}
-//         </ul>
-//       </div>
-//     </nav>
-//   );
-// }
-
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -68,6 +16,9 @@ export default function Navbar() {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -91,15 +42,16 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <ul className="navbar-nav ms-auto align-items-center">
+          {/* ✅ Right section — buttons + greeting */}
+          <ul className="navbar-nav ms-auto gap-2 flex-lg-row flex-column align-items-lg-center mt-3 mt-lg-0">
             {user ? (
               <>
-                <li className="nav-item me-3 text-white">
+                <li className="nav-item text-white text-center">
                   Hello, <strong>{user.displayName || "User"}</strong>
                 </li>
                 <li className="nav-item">
                   <button
-                    className="btn btn-outline-light rounded-pill px-4"
+                    className="btn btn-outline-light rounded-pill px-4 w-100 w-lg-auto"
                     onClick={logout}
                   >
                     Logout
@@ -108,9 +60,9 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <li className="nav-item me-2">
+                <li className="nav-item">
                   <Link
-                    className="btn btn-outline-light rounded-pill px-4"
+                    className="btn btn-outline-light rounded-pill px-4 w-100 w-lg-auto"
                     to="/login"
                   >
                     Login
@@ -119,7 +71,7 @@ export default function Navbar() {
                 <li className="nav-item">
                   <Link
                     to="/signup"
-                    className="btn btn-light text-primary rounded-pill px-4 fw-semibold"
+                    className="btn btn-light text-primary rounded-pill px-4 fw-semibold w-100 w-lg-auto"
                   >
                     Signup
                   </Link>
